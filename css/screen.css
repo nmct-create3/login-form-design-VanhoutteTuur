@@ -9,8 +9,58 @@
 \*------------------------------------*/
 
 :root {
+    /* COLORS */
+    --global-color-black: #000000;
 
+    --global-color-text: #20223a;
+    --global-color-background: #F5F6FA;
+
+    --global-color-grey: #E2E3E7;
+    --global-color-grey-dark: #757787;
+    --global-color-grey-x-dark: #606274;
+
+    --global-color-alpha-x-light:  #70a9ff;
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+    --global-color-alpha-x-dark: #1B4186;
+    
+    /* WHITESPACE */
+    --global-baseline: 8px; 
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline)); /* = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /* = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /* = 32px */   
+    --global-whitespace-xl: calc(var(--global-whitespace-md) * 2); /* = 48px */    
+    --global-whitespace-xxl: calc(var(--global-whitespace-md) * 3); /* = 72px */
+
+    /* LINE-HEIGHT */
+    --global-lineheight: calc(var(--global-baseline) * 3); /* = 24px */
+
+    --global-lineheight-xs: calc(var(--global-baseline) * 2); /* = 16px */
+    --global-lineheight-sm: calc(var(--global-baseline) * 5 / 2); /* = 20px */
+    --global-lineheight-md: calc(var(--global-baseline) * 4); /* = 32px */
+    --global-lineheight-lg: calc(var(--global-baseline) * 5); /* = 40px */
+    --global-lineheight-xl: calc(var(--global-baseline) * 6); /* = 48px */
+
+    /* INPUTS */
+    --global-input-border: 1px;
+    --global-input-lineheight: var(--global-lineheight); /* = 24px */
+    /* 
+    height = 48px = 24px + 2*1px + 2*padding 
+    <=> 2 * padding = 48px - 24px - 2*1px 
+    <=> padding = 11px 
+    */
+    --global-input-padding: calc((48px - var(--global-input-lineheight) - 2 * var(--global-input-border)) / 2);
+
+    /* BUTTONS */
+    --global-button-border: 1px;
+    --global-button-lineheight: var(--global-lineheight-sm);
+    --global-button-padding: calc((48px - var(--global-button-lineheight) - 2 * var(--global-button-border)) / 2);
 }
+
 
 /* CSS variables here */
 
@@ -35,11 +85,11 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: "Inter", sans-serif;
-    color: #20223a;
+    color: var(--global-color-text);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #F5F6FA;
+    background-color: var(--global-color-background);
 }
 
 *,
@@ -56,13 +106,13 @@ html {
 */
 
 ::-moz-selection {
-    background: #3385FF;
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: #3385FF;
+    background:var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -83,9 +133,7 @@ img {
 }
 
 /*
-    Elements: typography
-    ---
-    Default markup for typographic elements
+    Elements: typography48
 */
 
 h1,
@@ -96,28 +144,28 @@ h3 {
 
 h1 {
     font-size: 36px;
-    line-height: 48px;
-    margin: 0 0 24px;
+    line-height: var(--global-lineheight-xl);
+    margin: 0 0 var(--global-whitespace);
 }
 
 h2 {
     font-size: 32px;
-    line-height: 40px;
-    margin: 0 0 24px;
+    line-height: var(--global-lineheight-lg);
+    margin: 0 0 var(--global-whitespace);
 }
 
 h3 {
     font-size: 26px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    line-height: var(--global-lineheight-md);
+    margin: 0 0 var(--global-whitespace);
 }
 
 h4,
 h5,
 h6 {
     font-size: 20px;
-    line-height: 24px;
-    margin: 0 0 24px;
+    line-height: var(--global-lineheight);
+    margin: 0 0 var(--global-whitespace);
 }
 
 p,
@@ -127,12 +175,12 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 ul,
 ol {
-    padding-left: 24px;
+    padding-left: var(--global-whitespace);
 }
 
 li ul,
@@ -143,8 +191,8 @@ li ol {
 blockquote {
     font-style: normal;
     font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
+    line-height: var--global-lineheight-md);
+    margin: 0 0 var(--global-whitespace);
 }
 
 blockquote * {
@@ -155,7 +203,7 @@ blockquote * {
 figcaption {
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
+    line-height: var(--global-lineheight-xs);
     margin-top: 8px;
 }
 
@@ -163,22 +211,22 @@ hr {
     border: 0;
     height: 1px;
     background: LightGrey;
-    margin: 0 0 24px;
+    margin: 0 0 var(--global-whitespace);
 }
 
 a {
-    color: #3385FF;
+    color: var(--global-color-alpha);
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: #70a9ff;
+    color: var(--global-color-alpha-x-light);
 }
 
 a:hover,
 a:focus {
-    color: #70a9ff;
+    color:var(--global-color-alpha-x-light);
 }
 
 input,
@@ -198,36 +246,41 @@ label {
 
 .o-row {
     position: relative;
-    padding: 24px 24px 0;
+    padding: var(--global-whitespace) var(--global-whitespace) 0;
 }
 
 .o-row--login {
     /* stuff here to align the card */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
 }
 
 /* size modifiers */
 
 .o-row--lg {
-    padding-top: 48px;
-    padding-bottom: 24px;
+    padding-top: var(--global-whitespace-xl);
+    padding-bottom: var(--global-whitespace);
 }
 
 .o-row--xl {
-    padding-top: 72px;
-    padding-bottom: 48px;
+    padding-top: var(--global-whitespace-xxl);
+    padding-bottom: var(--global-whitespace-xl);
 }
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: var(--global-whitespace-xl);
+        padding-right: var(--global-whitespace-xl);
     }
 }
 
 @media (min-width: 992px) {
     .o-row--xl {
         padding-top: 96px;
-        padding-bottom: 72px;
+        padding-bottom: var(--global-whitespace-xxl);
     }
 }
 
@@ -255,7 +308,7 @@ label {
 }
 
 .o-section + .o-section {
-    padding-top: 24px;
+    padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
@@ -267,7 +320,7 @@ label {
 
 @media (min-width: 992px) {
     .o-section--xl + .o-section--xl {
-        padding-top: 72px;
+        padding-top: var(--global-whitespace-xxl);
     }
 }
 
@@ -309,19 +362,20 @@ label {
 }
 
 .o-layout--gutter-lg {
-    margin: 0 -24px;
+    /* margin: 0 -24px; */
+    margin: 0 calc(-1 * var(--global-whitespace));
 }
 
 .o-layout--gutter-lg > .o-layout__item {
-    padding: 0 24px;
+    padding: 0 var(--global-whitespace);
 }
 
 .o-layout--gutter-xl {
-    margin: 0 -48px;
+    margin: 0 calc( -1 * var(--global-whitespace-xl));
 }
 
 .o-layout--gutter-xl > .o-layout__item {
-    padding: 0 48px;
+    padding: 0 var(--global-whitespace-xl);
 }
 
 /* reverse horizontal row modifier */
@@ -453,13 +507,13 @@ label {
 }
 
 .c-logo--inner-circle {
-    fill: #3385FF;
+    fill:var(--global-color-alpha);
 }
 .c-logo--outer-circle {
-    fill: #1B4186;
+    fill: var(--global-color-alpha-x-dark);
 }
 .c-logo--text {
-    fill: #20223A;
+    fill:var(--global-color-text);
 }
 
 .c-logo__symbol {
@@ -476,16 +530,16 @@ label {
 .c-card {
     background-color: white;
     border-radius: 3px;
-    border: 1px solid rgba(#000000, 5%);
-    box-shadow: 0 2px 4px 0 rgba(#000000, 7%);
+    border: 1px solid rgba(var(--global-color-black), 5%);
+    box-shadow: 0 2px 4px 0 rgba(var(--global-color-black), 7%);
 }
 
 .c-card__body {
-    padding: 0 24px;
+    padding: 0 var(--global-whitespace);
 }
 
 .c-card__header {
-    padding: 48px 24px 24px;
+    padding: var(--global-whitespace-xl) var(--global-whitespace) var(--global-whitespace);
 }
 
 .c-card__title {
@@ -499,24 +553,24 @@ label {
 }
 
 .c-card__footer {
-    border-top: 1px solid #E2E3E7;
+    border-top: 1px solid var(--global-color-grey);
     display: flex;
     justify-content: center;
-    padding: 24px 24px 0;
+    padding: var(--global-whitespace) var(--global-whitespace) 0;
     
 }
 
 @media screen and (min-width: 500px) {
     .c-card__header {
-        padding-top: 48px;
-        padding-bottom: 24px;
+        padding-top: var(--global-whitespace-xl);
+        padding-bottom: var(--global-whitespace);
     }
 
     .c-card__body,
     .c-card__header,
     .c-card__foter {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: var(--global-whitespace-xl);
+        padding-right: var(--global-whitespace-xl);
     }
 }
 
@@ -547,13 +601,13 @@ label {
     -moz-appearance: none;
     appearance: none;   
     width: 100%;
-    border: 1px solid #E2E3E7;
+    border: var(--global-input-border) solid var(--global-color-grey);
     border-radius: 3px;
     font-family: inherit;
     font-size: 16px;
-    line-height: 24px;
-    color: #20223A;
-    padding: 11px;
+    line-height: var(--global-input-lineheight);
+    color: var(--global-color-text);
+    padding: var(--global-input-padding);
 
     outline: none;
 
@@ -565,7 +619,7 @@ label {
 }
 
 .c-input:focus {
-    border-color: #3385FF;
+    border-color: var(--global-color-alpha);
     box-shadow: 0 0 0 3px #4F95FF4d;
 }
 
@@ -576,7 +630,15 @@ label {
 */
 
 .c-label {
+    font-size: 14px;
+    line-height: var(--global-lineheight-xs);
+    margin-bottom: 8px;
+    color: var(--global-color-grey-x-dark);
+}
 
+.c-label--option {
+    margin-bottom: 0px;
+    margin-left: 8px;
 }
 
 /* If a input is focused within the form-field class change te color of the label */
@@ -593,31 +655,31 @@ label {
 
 .c-button {
     font-size: 16px;
-    line-height: 20px;
+    line-height: var(--global-button-lineheight);
     font-family: inherit;
     font-weight: 600;
     width: 100%;
     border-radius: 3px;
     color: white;
-    border: 1px solid #2E77E6;
-    padding: 13px;
-    background-color: #3385FF;
+    border: var(--global-button-border) solid var(--global-color-alpha-dark);
+    padding: var(--global-button-padding);
+    background-color: var(--global-color-alpha);
     
 }
 
 .c-button:hover {
-    background-color: #4F95FF;
+    background-color: var(--global-color-alpha-light);
 }
 
 .c-button:focus {
     outline: none;
-    border: 3px solid #3385FF80;
-    box-shadow: 0 0 2x 1px #3385fffd;
+    border: 3px solid rgba(var(--global-color-alpha), 50%);
+    box-shadow: 0 0 2x 1px rgba(var(--global-color-alpha), 99%);
     padding: 11px;
 }
 
 .c-button:active {
-    background-color: #2E77E6;
+    background-color: var(--global-color-alpha-dark);
 }
 
 .c-button--block {
@@ -640,6 +702,10 @@ label {
 
 .u-color-neutral-dark {
     color: Black;
+}
+
+.u-color-lighter {
+    color: var(--global-color-grey-dark);
 }
 
 /*
@@ -673,7 +739,7 @@ label {
 }
 
 .u-mb-xl {
-    margin-bottom: 48px !important;
+    margin-bottom: var(--global-whitespace-xl) !important;
 }
 
 /*
